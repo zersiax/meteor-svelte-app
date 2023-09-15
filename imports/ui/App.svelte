@@ -3,25 +3,37 @@
   import { CategoriesCollection } from "../api/CategoriesCollection";
   import Category from "./Category.svelte";
   import CategoryForm from "./CategoryForm.svelte";
-
-  $m: categories = CategoriesCollection.find({}, { sort: { createdAt: -1 } }).fetch()
-  let subIsReady = false;
+  let isLoading = true;
+  const handler = Meteor.subscribe('categories');
   $m: {
-    const handle = Meteor.subscribe("categories.all");
-    subIsReady = handle.ready();
+    isLoading = !handler.ready();
   }
+
+  $m: categories = CategoriesCollection.find(
+    {},
+    { sort: { createdAt: -1 } }
+  ).fetch();
 
   // more information about $m at https://atmospherejs.com/zodern/melte#tracker-statements
 </script>
 
-<div class="container">
+<div class="app">
   <header>
-    <h1>Shoppingbottom</h1>
-    <p>Shop before you hit rock bottom</p>
+    <div class="app-bar">
+      <div class="app-header">
+        <h1>📝️ Shoppingbottom</h1>
+        <p>Shop before you hit rock bottom</p>
+      </div>
+    </div>
   </header>
-  <CategoryForm />
+  <div class="main" role="main">
+    <!-- good god why does nobody use the main element in tutorials :-O -->
 
-  {#each categories as category (category._id)}
-    <Category {category} />
-  {/each}
+    <CategoryForm />
+    <div class="categories">
+      {#each categories as category (category._id)}
+        <Category {category} />
+      {/each}
+    </div>
+  </div>
 </div>

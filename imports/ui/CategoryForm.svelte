@@ -1,14 +1,12 @@
 <script>
-    import { CategoriesCollection } from "../api/CategoriesCollection";
+
+import { CategoriesCollection } from "../api/CategoriesCollection";
 
     let newCategory = "";
 
     const handleSubmit = () => {
-        CategoriesCollection.insert({
-            text: newCategory,
-            createdAt: new Date(),
-
-        });
+        if (!newCategory) return;
+        Meteor.call('categories.insert', newCategory);
         newCategory = '';
     }
 </script>
