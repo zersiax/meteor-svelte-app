@@ -6,6 +6,7 @@ Meteor.methods({
         check(text, String)
         CategoriesCollection.insert({
             text,
+            groceries: [],
             createdAt: new Date(),
 
         })
@@ -20,7 +21,21 @@ Meteor.methods({
                 updatedDate: new Date() // an attempt to force reactivity by updating a root document key rather than just the array
             },
                 $push: {
-                    groceries: newGrocery // this works on the database level but not the UI level after the first entry 
+                    groceries: { text: newGrocery } // this works on the database level but not the UI level after the first entry 
+                }
+        });
+    },
+    'categories.deleteGrocery'(categoryId, grocery) {
+        console.log(categoryId)
+        console.log(grocery); // make sure id and grocery exist and make sense 
+        CategoriesCollection.update({
+            _id: categoryId
+        }, {
+            $set: {
+                updatedDate: new Date() // an attempt to force reactivity by updating a root document key rather than just the array
+            },
+                $pull: {
+                    groceries: { text: grocery } // this works on the database level but not the UI level after the first entry 
                 }
         });
     },
@@ -29,4 +44,9 @@ Meteor.methods({
         check(categoryId, String)
         CategoriesCollection.remove(categoryId);
     },
+
+    'categories.removeAll'() {
+        CategoriesCollection.remove({});
+    },
+    
 });
