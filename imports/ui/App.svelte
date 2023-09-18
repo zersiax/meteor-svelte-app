@@ -3,6 +3,7 @@
   import { CategoriesCollection } from "../api/CategoriesCollection";
   import Category from "./Category.svelte";
   import CategoryForm from "./CategoryForm.svelte";
+  import GroceryForm from "./GroceryForm.svelte";
   let isLoading = true;
   const handler = Meteor.subscribe('categories');
   $m: {
@@ -21,8 +22,8 @@
   <header>
     <div class="app-bar">
       <div class="app-header">
-        <h1>📝️ Shoppingbottom</h1>
-        <p>Shop before you hit rock bottom</p>
+        <h1>📝️ Shoppinglist/h1>
+   
       </div>
     </div>
   </header>
