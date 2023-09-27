@@ -21,6 +21,7 @@ Meteor.startup(async () => {
       'breakfast'
 
     ].forEach(insertCategory)
+    categoriesCollection.updateMany({}, { $set: { groceries: []}});                          
   }
 
 
