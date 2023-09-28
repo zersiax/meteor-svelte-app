@@ -41,7 +41,7 @@ Meteor.methods({
     },
 
     'categories.remove'(categoryId) {
-        check(categoryId, String)
+        console.log(categoryId);
         CategoriesCollection.remove(categoryId);
     },
 

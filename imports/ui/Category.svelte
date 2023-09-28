@@ -7,7 +7,7 @@
    export let category;
    let deletedGrocery;
    const deleteThisCategory = () => {
-      CategoriesCollection.remove(category._id)
+      Meteor.call("categories.remove", category);
    };
    const deleteGrocery = () => {
       Meteor.call('categories.deleteGrocery', category._Id, deletedGgrocery);
