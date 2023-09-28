@@ -12,12 +12,12 @@ import { CategoriesCollection } from "../api/CategoriesCollection";
         newGrocery = '';
     }
 </script>
-<form class='grocery-form' on:submit|preventDefault={handleSubmit}>
+<form class='wrapper-input margin-bottom-small' on:submit|preventDefault={handleSubmit}>
     <input 
     type='text' 
     name='text2' 
     placeholder='What is it you need?'
     bind:value={newGrocery}
      />
-    <button type="submit">Add to list</button>
+    <button class="button-add" type="submit">Add to list</button>
 </form>
