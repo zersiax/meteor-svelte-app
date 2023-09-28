@@ -1,124 +1,181 @@
-body {
-  font-family: sans-serif;
-  background-color: #315481;
-  background-image: linear-gradient(to bottom, #315481, #918e82 100%);
-  background-attachment: fixed;
+:root {
+  --action-button-press: 70%;
+  --border-radius-circle: 9999rem;
+  --color-white: #FFFFFF;
+  --color-black: #291D1F;
+  --color-theme: #097EAE;
+  --color-add: #05875C;
+  --color-delete: #BC1319;
+  --color-divider-category: #888888;
+  --color-divider-grocery-item: #EBEBEB;
+  --font-family-primary: sans-serif;
+  --font-size-1: 1rem;
+  --font-size-2: 1.2rem;
+  --font-size-3: 1.3rem;
+  --font-size-4: 1.4rem;
+  --gap: 0.5rem;
+  --gutter: 1rem;
+  --line-height-1: 1;
+  --line-height-2: 1.2;
+  --line-height-3: 1.3;
+  --line-height-4: 1.4;
+  --tracking-tight: -0.5px;
+}
 
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  padding: 0;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
 
-  font-size: 14px;
+
+/* Core */
+html {
+  margin: 0;
+  min-height: 100%;
+  overflow-y: scroll;
+  padding: 0;
+  text-size-adjust: 100%;
+
+  -ms-overflow-style: scrollbar;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-family-primary);
+  font-size: 130%;
+  line-height: var(--line-height-3);
+  min-height: 100%;
+}
+
+/* Overall app layout */
+.main {
+  margin: calc(var(--gutter) * 2) var(--gutter) calc(var(--gutter) * 8) var(--gutter);
+}
+
+/* Utilities */
+.margin-bottom-tiny {
+  margin-bottom: 0.5rem;
+}
+
+.margin-bottom-small {
+  margin-bottom: 1rem;
+}
+
+.margin-bottom-medium {
+  margin-bottom: 2rem;
+}
+
+.margin-bottom-large {
+  margin-bottom: 3rem;
+}
+
+
+/* Base styling */
+h1,
+h2 {
+  line-height: var(--line-height-1);
+}
+
+input[type="text"] {
+  border: 1px solid var(--color-black);
+  font-size: var(--font-size-2);
+  line-height: var(--line-height-2);
+  padding: 1rem 0.75rem;
+  width: 100%;
 }
 
 button {
-  font-weight: bold;
-  font-size: 1em;
   border: none;
-  color: white;
-  box-shadow: 0 3px 3px rgba(34, 25, 25, 0.4);
-  padding: 5px;
-  cursor: pointer;
+  color: var(--color-white);
 }
 
-button:focus {
-  outline: 0;
-}
 
-.app {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
-
-.app-header {
-  flex-grow: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  overflow: auto;
-  background: white;
-}
-
-.main::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  background: inherit;
-}
-
-header {
-  background: #d2edf4;
-  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
-  padding: 20px 15px 15px 15px;
-  position: relative;
-  box-shadow: 0 3px 3px rgba(34, 25, 25, 0.4);
-}
-
+/* App header */
 .app-bar {
+  background-color: var(--color-theme);
+  color: #fff;
+  padding: 1rem;
+}
+
+/* Titles */
+.title-app,
+.title-category {
+  letter-spacing: var(--tracking-tight);
+}
+
+.divider {
+  border-top: 1px dashed var(--color-divider-category);
+  padding-top: 1rem;
+  margin-top: 3rem;
+}
+
+
+/* Wrappers */
+.wrapper-input {
   display: flex;
-  justify-content: space-between;
+  gap: var(--gap);
 }
 
-.app-bar h1 {
-  font-size: 1.5em;
-  margin: 0;
-  display: inline-block;
-  margin-right: 1em;
+/* Buttons */
+.button-add:active,
+.button-delete:active,
+.button-completed:active {
+  filter: brightness(var(--action-button-press)); /* Adds a pressed effect */
 }
 
-.category-form {
+.button-add {
+  background-color: var(--color-add);
+}
+
+.button-add:active {
+  padding-top: 0.25rem;
+}
+
+.button-delete {
+  --button-delete-size: 1.5rem;
+
+  background-color: var(--color-delete);
+  border-radius: var(--border-radius-circle);
   display: flex;
-  margin: 16px;
+  align-items: center;
+  justify-content: center;
+  height: var(--button-delete-size);
+  margin-top: 0.25rem;
+  width: var(--button-delete-size);
 }
 
-.category-form > input {
-  flex-grow: 1;
-  box-sizing: border-box;
-  padding: 10px 6px;
-  background: transparent;
-  border: 1px solid #aaa;
-  width: 100%;
-  font-size: 1em;
-  margin-right: 16px;
+.button-delete svg {
+  --button-delete-icon-size: 0.75rem;
+
+  height: var(--button-delete-icon-size);
+  width: var(--button-delete-icon-size);
 }
 
-.category-form > input:focus {
-  outline: 0;
+.button-completed {
+  --button-completed-size: 1.75rem;
+
+  background-color: var(--color-add);
+  border-radius: var(--border-radius-circle);
+  height: var(--button-completed-size);
+  width: var(--button-completed-size);
 }
 
-.category-form > button {
-  min-width: 100px;
-  height: 95%;
-  background-color: #315481;
+
+/* Grocery items */
+.grocery-list {
+  margin-left: calc(var(--gutter) * 1.25);
 }
 
-.categories {
-  list-style-type: none;
-  padding-inline-start: 0;
-  padding-left: 16px;
-  padding-right: 16px;
-  margin-block-start: 0;
-  margin-block-end: 0;
-}
-
-.categories > h2 {
+.grocery-list-item {
+  border-bottom: 1px solid var(--color-divider-grocery-item);
   display: flex;
-  padding: 16px;
-  border-bottom: #eee solid 1px;
-}
-
-.categories > button {
-  justify-self: flex-end;
-  background-color: #ff3046;
+  gap: var(--gap);
+  justify-content: space-between; /* Aligns close buttons to the right side of the viewport in a tidy column */
+  padding: 0.75rem 0;
 }

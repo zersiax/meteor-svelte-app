@@ -10,12 +10,12 @@ import { CategoriesCollection } from "../api/CategoriesCollection";
         newCategory = '';
     }
 </script>
-<form class='category-form' on:submit|preventDefault={handleSubmit}>
+<form class='wrapper-input' on:submit|preventDefault={handleSubmit}>
     <input 
     type='text' 
     name='text' 
     placeholder='Type to add a new category'
     bind:value={newCategory}
      />
-    <button type="submit">Add Category</button>
+    <button class="button-add" type="submit">Add Category</button>
 </form>
