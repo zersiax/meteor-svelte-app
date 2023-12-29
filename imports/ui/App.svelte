@@ -27,7 +27,7 @@ Meteor.call("categories.removeAll");
   <header>
     <div class="app-bar">
       <div class="app-header">
-        <h1 class="title-app">📝️ Shoppingbottom</h1>
+        <h1 class="title-app">Happy new year! 🎆🎇🎇🎆🧨🍾🍾</h1>
          <button type="button" class="delete" on:click={deleteEverything}>Clear List ⚡💣☠️⛔🚫</button>
       </div>
     </div>
