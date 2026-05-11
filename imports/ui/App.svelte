@@ -29,6 +29,7 @@ Meteor.call("categories.removeAll");
       <div class="app-header">
         <h1 class="title-app">📝️ Shoppingbottom</h1>
          <!-- <button type="button" class="delete" on:click={deleteEverything}>Clear List ⚡💣☠️⛔🚫</button> -->
+         <!-- Adding arbitrary comment to force redeploy because Nodechef is being rude -->
       </div>
     </div>
   </header>
