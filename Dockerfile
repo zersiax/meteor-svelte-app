@@ -1,6 +1,6 @@
-FROM node:12
+FROM node:14.21.4-bullseye
 
-RUN curl https://install.meteor.com/ | sh
+RUN curl "https://install.meteor.com/?release=2.13.3" | sh
 
 WORKDIR /app
 COPY . .
