@@ -11,6 +11,7 @@ RUN meteor --allow-superuser build --directory . --server-only
 WORKDIR /app/bundle/programs/server
 RUN npm install
 
+WORKDIR /app/bundle
 ENV PORT=3000
 
 CMD ["node", "main.js"]
