@@ -1,4 +1,4 @@
-FROM node:14.21.4-bullseye
+FROM node:14-bullseye
 
 RUN curl "https://install.meteor.com/?release=2.13.3" | sh
 
